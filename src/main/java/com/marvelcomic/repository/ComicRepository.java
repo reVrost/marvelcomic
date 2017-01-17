@@ -3,7 +3,7 @@ package com.marvelcomic.repository;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.marvelcomic.api.MarvelResponse;
-import com.marvelcomic.httpclient.ApiClient;
+import com.marvelcomic.httpclient.IApiClient;
 import com.marvelcomic.model.Comic;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
@@ -12,10 +12,10 @@ import java.lang.reflect.Type;
 
 
 public class ComicRepository implements IRepository<Comic> {
-    private ApiClient apiClient;
+    private IApiClient apiClient;
 
-    public ComicRepository() {
-        apiClient = new ApiClient("/comics/");
+    public ComicRepository(IApiClient client) {
+        apiClient = client;
     }
 
     @Override

@@ -1,19 +1,13 @@
 package com.marvelcomic.httpclient;
 
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-
-import com.marvelcomic.model.Comic;
 import com.marvelcomic.api.MarvelApi;
-import com.marvelcomic.api.MarvelResponse;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.util.EntityUtils;
 
-public class ApiClient<T> {
+public class ApiClient<T> implements IApiClient{
 
     private String apiUrl;
 
@@ -27,6 +21,7 @@ public class ApiClient<T> {
         return "?apikey=" + MarvelApi.API_KEY + "&hash=" + hash + "&ts=" + timestamp;
     }
 
+    @Override
     public HttpResponse get(String id) {
 
         try {
